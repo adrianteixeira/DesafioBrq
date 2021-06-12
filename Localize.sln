@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Api", "Localize\Localize.Api.csproj", "{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.App", "Localize.App\Localize.App.csproj", "{D4E2A013-B5F7-4F2D-BF71-F6A46B206C2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Services", "Localize.Services\Localize.Services.csproj", "{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Repository", "Localize.Repository\Localize.Repository.csproj", "{ABB95490-0F15-4FF0-A89C-F56702D12A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Domain", "Localize.Domain\Localize.Domain.csproj", "{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Localize.Db", "Localize.Db\Localize.Db.sqlproj", "{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,28 @@ Global
 		{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E2A013-B5F7-4F2D-BF71-F6A46B206C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E2A013-B5F7-4F2D-BF71-F6A46B206C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E2A013-B5F7-4F2D-BF71-F6A46B206C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E2A013-B5F7-4F2D-BF71-F6A46B206C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB95490-0F15-4FF0-A89C-F56702D12A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB95490-0F15-4FF0-A89C-F56702D12A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB95490-0F15-4FF0-A89C-F56702D12A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB95490-0F15-4FF0-A89C-F56702D12A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
