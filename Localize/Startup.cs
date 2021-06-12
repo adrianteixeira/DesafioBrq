@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Localize.Application.Services;
+using Localize.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +30,15 @@ namespace Localize
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddTransient<IFilmeService, FilmeService>();
+
+            services.AddTransient<IFilmeRepository, FilmeRepository>();
+
+            services.AddSingleton<IDbConnection>(x =>
+            {
+                return new SqlConnection(Configuration.GetConnectionString("Default"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +48,8 @@ namespace Localize
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
 
             app.UseHttpsRedirection();
 
