@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Localize.Application.Interfaces
 {
-    public interface IFilmeService
+    public interface IClienteService
     {
-        Task CadastrarFilme(Filme filme);
+        Task CadastrarCliente(Cliente cliente);
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Localize.Domain.Models
+﻿namespace Localize.Domain.Models
 {
     public class Filme
     {

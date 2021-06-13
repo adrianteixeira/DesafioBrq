@@ -1,23 +1,13 @@
 ﻿using Dapper;
 using Localize.Domain.Models;
-using System;
+using Localize.Infra.Sql.Interfaces;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Localize.Repository
 {
-    public interface IFilmeRepository
-    {
-        Task<IEnumerable<Filme>> Obter();
-        Task<Filme> Obter(int id);
-        Task Cadastrar(Filme filme);
-        Task Atualizar(Filme filme, int id);
-        Task Delete(int id);
-        Task<bool>AlterarDisponibilidade(int id, bool disponivel);
-    }
+
     public class FilmeRepository : IFilmeRepository
     {
         private readonly IDbConnection _dbConnection;
@@ -69,7 +59,7 @@ namespace Localize.Repository
             });
         }
 
-        public async Task Delete(int id)
+        public async Task Deletar(int id)
         {
             var sql = "DELETE FROM Filme WHERE id = @id";
 

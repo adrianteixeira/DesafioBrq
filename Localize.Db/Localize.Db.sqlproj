@@ -63,5 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Filme.sql" />
+    <Build Include="dbo\Tables\Cliente.sql" />
   </ItemGroup>
 </Project>

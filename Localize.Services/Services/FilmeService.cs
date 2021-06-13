@@ -1,16 +1,10 @@
-﻿using Localize.Domain.Models;
-using Localize.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Localize.Application.Interfaces;
+using Localize.Domain.Models;
+using Localize.Infra.Sql.Interfaces;
 using System.Threading.Tasks;
 
 namespace Localize.Application.Services
 {
-    public interface IFilmeService
-    {
-        Task CadastrarFilme(Filme filme);
-    }
 
     public class FilmeService : IFilmeService
     {
@@ -25,7 +19,6 @@ namespace Localize.Application.Services
         {
            await _filmeRepository.Cadastrar(filme);
         }
-
 
     }
 }
