@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Localize.Domain.Models;
-using Localize.Infra.Sql.Interfaces;
+using Localize.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -26,22 +26,18 @@ namespace Localize.Infra.Sql.Repositories
         public async Task<Cliente> Obter(int id)
         {
             string sql = "SELECT * FROM CLIENTE where id = @id";
-
             return await _dbConnection.QuerySingleAsync<Cliente>(sql, new { id });
         }
 
         public async Task Cadastrar(Cliente cliente)
         {
-            string sql = @"INSERT INTO Cliente (Nome, DataNascimento, Cpf, Email, Telefone)
-                                    VALUES (@Nome, @DataNascimento, @Cpf, @Email, @Telefone)";
-
+            string sql = @"INSERT INTO Cliente VALUES (@Nome, @DataNascimento, @Cpf, @Email, @Telefone)";
             await _dbConnection.ExecuteAsync(sql, cliente);
         }
 
         public async Task Atualizar(int id, Cliente cliente)
         {
-            string sql = @"UPDATE FROM Cliente (Nome, DataNascimento, Cpf, Email, Telefone)
-                                    VALUES (@Nome, @DataNascimento, @Cpf, @Email, @Telefone)
+            string sql = @"UPDATE FROM Cliente VALUES (@Nome, @DataNascimento, @Cpf, @Email, @Telefone)
                                     WHERE Id = @id";
 
             await _dbConnection.ExecuteAsync(sql, new
@@ -53,7 +49,6 @@ namespace Localize.Infra.Sql.Repositories
         public async Task Deletar(int id)
         {
             var sql = "DELETE FROM Cliente WHERE id = @id";
-
             await _dbConnection.ExecuteAsync(sql, new { name = id });
         }
 

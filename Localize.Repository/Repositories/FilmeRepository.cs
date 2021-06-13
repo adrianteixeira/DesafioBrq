@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Localize.Domain.Models;
-using Localize.Infra.Sql.Interfaces;
+using Localize.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -33,16 +33,9 @@ namespace Localize.Repository
 
         public async Task Cadastrar(Filme filme)
         {
-            string sql = @"INSERT INTO Filme (Nome, Categoria, Descricao, Disponivel)
-                                  VALUES (@Nome, @Categoria, @Descricao, @Disponivel)";
+            string sql = @"INSERT INTO Filme VALUES (@Nome, @Categoria, @Descricao, @Disponivel)";
             
-            await _dbConnection.ExecuteAsync(sql, new
-            {
-                filme.Nome,
-                filme.Categoria,
-                filme.Descricao,
-                filme.Disponivel
-            });
+            await _dbConnection.ExecuteAsync(sql, filme);
         }
 
         public async Task Atualizar(Filme filme, int id)

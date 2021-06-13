@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Localize.Domain.Models;
 
-namespace Localize.Infra.Sql.Interfaces
+namespace Localize.Domain.Interfaces
 {
     public interface IFilmeRepository
     {

@@ -1,6 +1,6 @@
 using Localize.Application.Interfaces;
 using Localize.Application.Services;
-using Localize.Infra.Sql.Interfaces;
+using Localize.Domain.Interfaces;
 using Localize.Infra.Sql.Repositories;
 using Localize.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +32,10 @@ namespace Localize
 
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
-            
+
+            services.AddTransient<ILocadorService, LocadorService>();
+            services.AddTransient<ILocadorRepository, LocadorRepository>();
+
             services.AddSingleton<IDbConnection>(x =>
             {
                 return new SqlConnection(Configuration.GetConnectionString("Default"));

@@ -18,11 +18,12 @@ namespace Localize.Api.Controllers
         }
 
         [HttpPost("Filme")]
-        public async Task<IActionResult> CreateFilme(Filme filme)
+        public async Task<IActionResult> CadastrarFilme(Filme filme)
         {
             await _filmeService.CadastrarFilme(filme);
 
-            return Created($"api/cities/{filme.Nome}", filme);
+            return Created($"api/filmes/{filme.Nome}", filme);
         }
+
     }
 }

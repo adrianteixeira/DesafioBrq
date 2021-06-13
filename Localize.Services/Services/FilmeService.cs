@@ -1,6 +1,6 @@
 ﻿using Localize.Application.Interfaces;
 using Localize.Domain.Models;
-using Localize.Infra.Sql.Interfaces;
+using Localize.Domain.Interfaces;
 using System.Threading.Tasks;
 
 namespace Localize.Application.Services

@@ -11,17 +11,17 @@ namespace Localize.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientesController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         private readonly IClienteService _clienteService;
 
-        public ClientesController(IClienteService clienteService)
+        public ClienteController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
         [HttpPost("Cliente")]
-        public async Task<IActionResult> CreateCliente(Cliente cliente)
+        public async Task<IActionResult> CadastrarCliente(Cliente cliente)
         {
             await _clienteService.CadastrarCliente(cliente);
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Localize.Infra.Sql.Interfaces
+namespace Localize.Domain.Interfaces
 {
     public interface IClienteRepository
     {
