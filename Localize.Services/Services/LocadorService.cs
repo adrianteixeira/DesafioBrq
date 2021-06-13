@@ -13,11 +13,10 @@ namespace Localize.Application.Services
         {
             _locadorRepository = locadorRepository;
         }
-        
+
         public async Task CadastrarLocador(Locador locador)
         {
-            //TODO - Regra 1 - locador nao pode se repetir
-            //await _locadorRepository.Get(cpf);
+            //Regra 1 • Um locador não pode se repetir
             await _locadorRepository.Cadastrar(locador);
         }
     }

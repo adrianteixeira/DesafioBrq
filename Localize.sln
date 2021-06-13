@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Api", "Localize\Localize.Api.csproj", "{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localize.Api", "Localize\Localize.Api.csproj", "{1EF11DD7-7B70-4BE9-A9FE-E067173E8C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Application", "Localize.Services\Localize.Application.csproj", "{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localize.Application", "Localize.Services\Localize.Application.csproj", "{A67ED076-B61E-4BB9-A5A8-6E1AF0F1DF68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Infra.Sql", "Localize.Repository\Localize.Infra.Sql.csproj", "{ABB95490-0F15-4FF0-A89C-F56702D12A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localize.Infra.Sql", "Localize.Repository\Localize.Infra.Sql.csproj", "{ABB95490-0F15-4FF0-A89C-F56702D12A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localize.Domain", "Localize.Domain\Localize.Domain.csproj", "{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localize.Domain", "Localize.Domain\Localize.Domain.csproj", "{9189CA40-D3B2-42EC-897E-F4C0B8B9CED5}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Localize.Db", "Localize.Db\Localize.Db.sqlproj", "{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Localize.Database", "Localize.Db\Localize.Database.sqlproj", "{E0E3B7FA-90EA-4B51-9623-B751942BEB0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

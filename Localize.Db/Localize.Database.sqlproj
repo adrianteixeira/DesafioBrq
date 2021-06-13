@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Localize.Db</Name>
+    <Name>Localize.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{e0e3b7fa-90ea-4b51-9623-b751942beb0e}</ProjectGuid>
@@ -66,6 +66,8 @@
     <Build Include="dbo\Tables\Filme.sql" />
     <Build Include="dbo\Tables\Cliente.sql" />
     <Build Include="dbo\Tables\Funcionario.sql" />
+    <Build Include="dbo\Tables\Midia.sql" />
+    <Build Include="dbo\Tables\Locacao.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Snapshots\Localize.Db_20210613_09-37-20.dacpac" />

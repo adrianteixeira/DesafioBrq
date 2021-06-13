@@ -9,38 +9,29 @@ namespace Localize.Api.Controllers
     [ApiController]
     public class LocacoesController : ControllerBase
     {
-        private readonly ILocadorService _locacaoService;
+        private readonly ILocacaoService _locacaoService;
 
-        public LocacoesController(ILocadorService locacaoService)
+        public LocacoesController(ILocacaoService locacaoService)
         {
             _locacaoService = locacaoService;
         }
 
-        [HttpPost("Filme")]
-        public async Task<IActionResult> AlugarFilme(Locador locacao)
+        [HttpPost("Devolver")]
+        public async Task<IActionResult> AlugarFilme(Locacao locacao)
         {
             await _locacaoService.AlugarFilme(locacao);
             //cpf.cliente, cpf.funcionario, midia.codigoBarras
 
-            return Created($"api/locacao/{locacao.}", locacao);
+            return Created($"api/locacao/{locacao.Id}", locacao);
         }
 
-        [HttpPost("Filme")]
-        public async Task<IActionResult> DevolverFilme(string cpfCliente, string cpfFuncionario, string codigoMidia)
+        [HttpPost("Devolver")]
+        public async Task<IActionResult> DevolverFilme(Locacao locacao)
         {
             await _locacaoService.DevolverFilme(locacao);
             //cpf.cliente, cpf.funcionario, midia.codigoBarras
 
-            return Created($"api/locacao/{locacao.}", locacao);
-        }
-
-        [HttpPost("Filme")]
-        public async Task<IActionResult> VerificarDisponibilidadeFilme(Locador locacao)
-        {
-            await _locacaoService.VerificarDisponibilidade(locacao);
-            //cpf.cliente, cpf.funcionario, midia.codigoBarras
-
-            return Created($"api/locacao/{locacao.}", locacao);
+            return Created($"api/locacao/{locacao.LocadorId}", locacao);
         }
 
 

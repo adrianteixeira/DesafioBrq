@@ -36,6 +36,11 @@ namespace Localize
             services.AddTransient<ILocadorService, LocadorService>();
             services.AddTransient<ILocadorRepository, LocadorRepository>();
 
+            services.AddTransient<ILocacaoService, LocacaoService>();
+            services.AddTransient<ILocacaoRepository, LocacaoRepository>();
+
+            services.AddTransient<IMidiaRepository, MidiaRepository>();
+
             services.AddSingleton<IDbConnection>(x =>
             {
                 return new SqlConnection(Configuration.GetConnectionString("Default"));

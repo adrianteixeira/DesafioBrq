@@ -51,7 +51,7 @@ namespace Localize.Infra.Sql.Repositories
         public async Task Deletar(int id)
         {
             var sql = "DELETE FROM Locador WHERE id = @id";
-            await _dbConnection.ExecuteAsync(sql, new { id});
+            await _dbConnection.ExecuteAsync(sql, id);
         }
 
         public async Task Deletar(string cpf)

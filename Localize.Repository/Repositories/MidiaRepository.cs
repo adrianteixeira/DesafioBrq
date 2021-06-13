@@ -18,49 +18,64 @@ namespace Localize.Infra.Sql.Repositories
 
         #region Crud
 
-        public async Task<IEnumerable<Locador>> Obter()
+        public async Task<IEnumerable<Midia>> Obter()
         {
             string sql = "SELECT * FROM Midia";
-            return await _dbConnection.QueryAsync<Locador>(sql);
+            return await _dbConnection.QueryAsync<Midia>(sql);
         }
 
-        public async Task<Locador> Obter(int id)
+        public async Task<Midia> Obter(int id)
         {
             string sql = "SELECT * FROM Midia where id = @id";
-            return await _dbConnection.QuerySingleAsync<Locador>(sql, new { id });
+            return await _dbConnection.QuerySingleAsync<Midia>(sql, new { id });
         }
 
-        public async Task<Locador> Obter(Guid codigoBarras)
+        public async Task<Midia> Obter(Guid codigoBarras)
         {
             string sql = "SELECT * FROM Midia where CodigoBarras = @CodigoBarras";
-            return await _dbConnection.QuerySingleAsync<Locador>(sql, new { codigoBarras });
+            return await _dbConnection.QuerySingleAsync<Midia>(sql, new { codigoBarras });
         }
 
-        public async Task Cadastrar(Locador locador)
+
+        public async Task Cadastrar(Midia midia)
         {
-            string sql = @"INSERT INTO Locador VALUES (@Nome, @Cpf, @Salario, @Telefone)";
-            await _dbConnection.ExecuteAsync(sql, locador);
+            string sql = @"INSERT INTO Midia VALUES (@FilmeId, @CodigoBarras, @Tipo, 1)";
+            await _dbConnection.ExecuteAsync(sql, midia);
         }
 
-        public async Task Atualizar(int id, Locador locador)
+        public async Task Atualizar(int id, Midia midia)
         {
-            string sql = @"UPDATE FROM Locador VALUES (@Nome, @Cpf, @Salario, @Telefone)
+            string sql = @"UPDATE FROM Midia VALUES (@FilmeId, @CodigoBarras, @Tipo, @Disponivel)
                                                    WHERE Id = @id";
-            await _dbConnection.ExecuteAsync(sql, new { id, locador});
+            await _dbConnection.ExecuteAsync(sql, new { id, midia});
         }
 
         public async Task Deletar(int id)
         {
-            var sql = "DELETE FROM Locador WHERE id = @id";
+            var sql = "DELETE FROM Midia WHERE id = @id";
             await _dbConnection.ExecuteAsync(sql, new { id});
         }
 
-        public async Task Deletar(string cpf)
+        public async Task Deletar(string codigoBarras)
         {
-            var sql = "DELETE FROM Locador WHERE cpf = @cpf";
-            await _dbConnection.ExecuteAsync(sql, cpf);
+            var sql = "DELETE FROM Midia WHERE codigoBarras = @codigoBarras";
+            await _dbConnection.ExecuteAsync(sql, codigoBarras);
         }
         #endregion
+
+        public async Task<IEnumerable<Midia>> ObterDisponiveisPorFilme(int filmeId)
+        {
+            string sql = "SELECT * FROM Midia where filmeId = @filmeId";
+            return await _dbConnection.QueryAsync<Midia>(sql, filmeId);
+        }
+
+        public async Task AlterarDisponibilidade(int id, bool disponivel)
+        {
+            string sql = @"UPDATE FROM Midia (Disponivel) 
+                                    VALUES (@FilmeId, @CodigoBarras, @Tipo, @Disponivel)
+                                    WHERE Id = @id";
+            await _dbConnection.ExecuteAsync(sql, new { id, disponivel });
+        }
 
     }
 }

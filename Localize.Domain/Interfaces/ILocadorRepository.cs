@@ -8,6 +8,7 @@ namespace Localize.Domain.Interfaces
     {
         Task<IEnumerable<Locador>> Obter();
         Task<Locador> Obter(int id);
+        Task<Locador> Obter(string cpf);
         Task Cadastrar(Locador locador);
         Task Atualizar(int id, Locador locador);
         Task Deletar(int id);

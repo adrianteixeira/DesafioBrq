@@ -7,11 +7,13 @@ namespace Localize.Domain.Interfaces
 {
     public interface IMidiaRepository
     {
-        Task<IEnumerable<Locador>> Obter();
-        Task<Locador> Obter(Guid codigoBarras);
-        Task Cadastrar(Locador locador);
-        Task Atualizar(int id, Locador locador);
+        Task<IEnumerable<Midia>> Obter();
+        Task<Midia> Obter(int id);
+        Task<Midia> Obter(Guid codigoBarras);
+        Task Cadastrar(Midia midia);
+        Task Atualizar(int id, Midia midia);
         Task Deletar(int id);
-        Task Deletar(string cpf);
+        Task Deletar(string codigoBarras);
+        Task AlterarDisponibilidade(int id, bool disponivel);
     }
 }
