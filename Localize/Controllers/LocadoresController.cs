@@ -16,10 +16,11 @@ namespace Localize.Api.Controllers
             _locadorService = locadorService;
         }
 
-        [HttpPost("Filme")]
+        [HttpPost("Locador")]
         public async Task<IActionResult> CreateLocador(Locador locador)
         {
-            await _locadorService.CadastrarLocador(locador);
+            if(!await _locadorService.CadastrarLocador(locador))
+                return Conflict($"Locador com o cpf {locador.Cpf} já cadastrado");
 
             return Created($"api/filmes/{locador.Cpf}", locador);
         }

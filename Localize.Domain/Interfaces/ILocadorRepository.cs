@@ -13,5 +13,6 @@ namespace Localize.Domain.Interfaces
         Task Atualizar(int id, Locador locador);
         Task Deletar(int id);
         Task Deletar(string cpf);
+        Task<bool> Existe(string cpf);
     }
 }

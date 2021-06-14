@@ -5,6 +5,6 @@ namespace Localize.Application.Interfaces
 {
     public interface ILocadorService
     {
-        Task CadastrarLocador(Locador locador);
+        Task<bool> CadastrarLocador(Locador locador);
     }
 }

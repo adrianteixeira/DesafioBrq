@@ -14,10 +14,12 @@ namespace Localize.Application.Services
             _locadorRepository = locadorRepository;
         }
 
-        public async Task CadastrarLocador(Locador locador)
+        public async Task<bool> CadastrarLocador(Locador locador)
         {
-            //Regra 1 • Um locador não pode se repetir
+            if (await _locadorRepository.Existe(locador.Cpf))
+                return false;
             await _locadorRepository.Cadastrar(locador);
+            return true;
         }
     }
 }

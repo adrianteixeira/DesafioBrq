@@ -22,7 +22,6 @@ namespace Localize.Application.Services
 
         public async Task<bool> AlugarFilme(Locacao locacao)
         {
-            //Regra 3 • Não permitir alugar um filme que não está disponível
             var midiaAlugada = await _midiaRepository.Obter(locacao.MidiaId);
             if (!midiaAlugada.Disponivel)
             {
@@ -39,7 +38,6 @@ namespace Localize.Application.Services
 
         public async Task<double> DevolverFilme(Guid codigoMidia)
         {
-            //Regra 4 •	Alertar na devolução se o filme está com atraso
             DateTime dataDevolucao = DateTime.Now;
             DateTime dataAtraso = DateTime.MinValue;
             var midiaAlugada = await _midiaRepository.Obter(codigoMidia);

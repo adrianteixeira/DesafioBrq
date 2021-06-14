@@ -23,7 +23,7 @@ namespace Localize.Api.Controllers
         {
             if(!await _locacaoService.AlugarFilme(locacao))
             {
-                return Conflict("Filme já alugado");
+                return Conflict("Mídia de filme já alugada");
             }
             return Created($"api/locacao/{locacao.Id}", locacao);
         }

@@ -10,7 +10,11 @@
 
 
 
+
+
 GO
-CREATE NONCLUSTERED INDEX [IX_Locador]
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Locador]
     ON [dbo].[Locador]([Cpf] ASC);
+
+
 

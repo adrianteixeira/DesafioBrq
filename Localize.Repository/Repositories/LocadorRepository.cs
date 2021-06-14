@@ -61,5 +61,11 @@ namespace Localize.Infra.Sql.Repositories
         }
         #endregion
 
+        public async Task<bool> Existe(string cpf)
+        {
+            string sql = @"SELECT COUNT(*) FROM Locador WHERE cpf = @cpf";
+            int rows = await _dbConnection.QueryFirstAsync<int>(sql, new { cpf });
+            return (!rows.Equals(0));
+        }
     }
 }
