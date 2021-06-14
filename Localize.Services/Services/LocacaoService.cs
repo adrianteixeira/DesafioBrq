@@ -3,6 +3,8 @@ using Localize.Domain.Models;
 using Localize.Domain.Interfaces;
 using System.Threading.Tasks;
 using System;
+using System.Net.Http;
+using System.Net;
 
 namespace Localize.Application.Services
 {
@@ -18,25 +20,36 @@ namespace Localize.Application.Services
             _midiaRepository = midiaRepository;
         }
 
-        public async Task AlugarFilme(Locacao locacao)
+        public async Task<bool> AlugarFilme(Locacao locacao)
         {
             //Regra 3 • Não permitir alugar um filme que não está disponível
-            if ((await _midiaRepository.Obter(locacao.MidiaId)).Disponivel)
+            var midiaAlugada = await _midiaRepository.Obter(locacao.MidiaId);
+            if (!midiaAlugada.Disponivel)
             {
-                await _locacaoRepository.Cadastrar(locacao);
-                await _midiaRepository.AlterarDisponibilidade(locacao.MidiaId, false);
+                return false;
             }
+
+            locacao.DataEmprestimo = DateTime.Now;
+
+            await _locacaoRepository.Cadastrar(locacao);
+            await _midiaRepository.AlterarDisponibilidade(locacao.MidiaId, false);
+            return true;
 
         }
 
-        public async Task DevolverFilme(Locacao locacao)
+        public async Task<double> DevolverFilme(Guid codigoMidia)
         {
-            //Regra 3 •	Alertar na devolução se o filme está com atraso
-            if (!(await _midiaRepository.Obter(locacao.MidiaId)).Disponivel)
+            //Regra 4 •	Alertar na devolução se o filme está com atraso
+            DateTime dataDevolucao = DateTime.Now;
+            DateTime dataAtraso = DateTime.MinValue;
+            var midiaAlugada = await _midiaRepository.Obter(codigoMidia);
+            if (!midiaAlugada.Disponivel)
             {
-                await _locacaoRepository.Atualizar(locacao, DateTime.Now);
-                await _midiaRepository.AlterarDisponibilidade(locacao.MidiaId, true);
+                dataAtraso = await _locacaoRepository.RegistrarDevolucao(midiaAlugada.Id, dataDevolucao);
+                await _midiaRepository.AlterarDisponibilidade(midiaAlugada.Id, true);
             }
+            
+            return dataAtraso == DateTime.MinValue ? 0 : (dataAtraso - dataDevolucao).TotalHours;
 
         }
 

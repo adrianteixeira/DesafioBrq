@@ -39,23 +39,22 @@ namespace Localize.Infra.Sql.Repositories
         public async Task Cadastrar(Locacao locacao)
         {
             string sql = @"INSERT INTO Locacao 
-                            VALUES (@MidiaId, @ClienteId, @LocacaoId, @DataEmprestimo, @DataDevolucao
+                            VALUES (@MidiaId, @ClienteId, @LocadorId, @DataEmprestimo, @DataDevolucao, null
                           , @Preco, @Desconto)";
             await _dbConnection.ExecuteAsync(sql, locacao);
         }
 
         public async Task Atualizar(Locacao locacao)
         {
-            string sql = @"UPDATE FROM Locacao VALUES (@MidiaId, @ClienteId, @LocacaoId, @DataEmprestimo
-                            ,@DataDevolucao, null, @Preco, @Desconto) WHERE Id = @id";
-            await _dbConnection.ExecuteAsync(sql, new { locacao });
-        }
-
-        public async Task Atualizar(Locacao locacao, DateTime dataDevolvida)
-        {
-            string sql = @"UPDATE FROM Locacao VALUES (@MidiaId, @ClienteId, @LocacaoId, @DataEmprestimo
-                            ,@DataDevolucao, @DataDevolvida, @Preco, @Desconto) WHERE Id = @id";
-            await _dbConnection.ExecuteAsync(sql, new { locacao, dataDevolvida });
+            string sql = @"UPDATE Locacao
+                            SET MidiaId = @MidiaId
+                            ,ClienteId = @ClienteId
+                            ,LocadorId = @LocadorId
+                            ,DataDevolucao = @DataDevolucao
+                            ,DataDevolvida = @DataDevolvida
+                            ,Preco = @Preco
+                            ,Desconto = @Desconto WHERE Id = @id";
+            await _dbConnection.ExecuteAsync(sql, locacao);
         }
 
         public async Task Deletar(int id)
@@ -75,5 +74,16 @@ namespace Localize.Infra.Sql.Repositories
             await _dbConnection.ExecuteAsync(sql, midiaId);
         }
         #endregion
+
+        public async Task<DateTime> RegistrarDevolucao(int midiaId, DateTime dataDevolvida)
+        {
+            string sqlAtualizacao = @"UPDATE Locacao
+                            SET DataDevolvida = @dataDevolvida
+                            WHERE midiaId = @midiaId";
+            await _dbConnection.ExecuteAsync(sqlAtualizacao, new { midiaId, dataDevolvida });
+
+            string sqlRetornoData = @"select DataDevolvida from Locacao where midiaId = @midiaId";
+            return await _dbConnection.QuerySingleAsync<DateTime>(sqlRetornoData, new { midiaId });
+        }
     }
 }

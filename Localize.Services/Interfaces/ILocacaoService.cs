@@ -1,11 +1,13 @@
 ﻿using Localize.Domain.Models;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Localize.Application.Interfaces
 {
     public interface ILocacaoService
     {
-        Task AlugarFilme(Locacao locacao);
-        Task DevolverFilme(Locacao locacao);
+        Task<bool> AlugarFilme(Locacao locacao);
+        Task<double> DevolverFilme(Guid codigoMidia);
     }
 }

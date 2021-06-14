@@ -10,7 +10,7 @@ namespace Localize.Domain.Models
         public int MidiaId { get; set; }
         public int ClienteId { get; set; }
         public int LocadorId { get; set; }
-        public DateTime DataAluguel { get; set; }
+        public DateTime DataEmprestimo { get; set; }
         public DateTime DataDevolucao { get; set; }
         public DateTime DataDevolvida { get; set; }
         public decimal Preco { get; set; }
@@ -19,13 +19,21 @@ namespace Localize.Domain.Models
         public Locacao()
         {
             DefinirPeriodoAluguel();
+            DefinirDataDevolvida();
         }
 
         private void DefinirPeriodoAluguel()
         {
-            if(DataAluguel > DataDevolucao)
+            if(DataEmprestimo > DataDevolucao)
             {
-                DataAluguel = DataDevolucao;
+                DataEmprestimo = DataDevolucao;
+            }
+        }
+        private void DefinirDataDevolvida()
+        {
+            if (DataDevolvida == DateTime.MinValue)
+            {
+                DataDevolvida = DateTime.Now;
             }
         }
     }

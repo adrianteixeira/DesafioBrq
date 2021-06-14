@@ -1,12 +1,13 @@
 ﻿CREATE TABLE [dbo].[Midia] (
-    [Id]           INT              NOT NULL,
+    [Id]           INT              IDENTITY (1, 1) NOT NULL,
     [FilmeId]      INT              NOT NULL,
     [CodigoBarras] UNIQUEIDENTIFIER NOT NULL,
     [Tipo]         VARCHAR (20)     NOT NULL,
     [Disponivel]   BIT              NOT NULL,
-    CONSTRAINT [PK_Midia] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Midia_Filme] FOREIGN KEY ([Id]) REFERENCES [dbo].[Midia] ([Id])
+    CONSTRAINT [PK_Midia] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 
 GO

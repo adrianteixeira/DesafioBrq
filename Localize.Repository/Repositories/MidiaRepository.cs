@@ -71,8 +71,8 @@ namespace Localize.Infra.Sql.Repositories
 
         public async Task AlterarDisponibilidade(int id, bool disponivel)
         {
-            string sql = @"UPDATE FROM Midia (Disponivel) 
-                                    VALUES (@FilmeId, @CodigoBarras, @Tipo, @Disponivel)
+            string sql = @"UPDATE Midia
+                                SET disponivel = @disponivel
                                     WHERE Id = @id";
             await _dbConnection.ExecuteAsync(sql, new { id, disponivel });
         }

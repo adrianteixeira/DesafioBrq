@@ -12,9 +12,9 @@ namespace Localize.Domain.Interfaces
         Task<Locacao> Obter(string cpf);
         Task Cadastrar(Locacao locacao);
         Task Atualizar(Locacao locacao);
-        Task Atualizar(Locacao locacao, DateTime dataDevolvida);
         Task Deletar(int id);
         Task DeletarPorCliente(int clienteId);
         Task DeletarPorMidia(int midiaId);
+        Task<DateTime> RegistrarDevolucao(int midiaId, DateTime dataDevolvida);
     }
 }
